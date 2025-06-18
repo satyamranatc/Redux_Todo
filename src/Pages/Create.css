@@ -1,0 +1,219 @@
+/* Create page styles */
+.create-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Header section */
+section:first-child {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+/* Form section */
+#FormSection {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Input field styles */
+input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+input[type="text"]::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Textarea styles */
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Priority section */
+form p {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Select dropdown styles */
+select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 3rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+select option {
+  padding: 0.5rem;
+  color: #374151;
+}
+
+/* Button styles */
+button {
+  background-color: #111827;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .create-container {
+    padding: 1rem;
+  }
+  
+  section h2 {
+    font-size: 1.75rem;
+  }
+  
+  #FormSection {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #FormSection {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  input[type="text"],
+  textarea,
+  select,
+  button {
+    padding: 0.875rem;
+  }
+  
+  textarea {
+    min-height: 100px;
+  }
+}
+
+/* Focus states for accessibility */
+input[type="text"]:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid #374151;
+  outline-offset: 2px;
+}
+
+/* Hover effects for better UX */
+input[type="text"]:hover,
+textarea:hover,
+select:hover {
+  border-color: #9ca3af;
+}
+
+/* Form validation styles (for future use) */
+.error {
+  border-color: #ef4444 !important;
+}
+
+.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.success {
+  border-color: #10b981 !important;
+}
