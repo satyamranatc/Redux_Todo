@@ -1,57 +1,52 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { DeleteTask } from '../TaskSlicer.js';
+import './AllTask.css' // Import the CSS file
 
 export default function AllTask() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      TaskName: "Complete Project Documentation",
-      TaskDescription: "Write comprehensive documentation for the new project including API references and user guides",
-      TaskPriority: "High"
-    },
-    {
-      id: 2,
-      TaskName: "Team Meeting Preparation",
-      TaskDescription: "Prepare agenda and materials for next week's team meeting",
-      TaskPriority: "Medium"
-    },
-    {
-      id: 3,
-      TaskName: "Code Review",
-      TaskDescription: "Review pull requests from team members and provide feedback",
-      TaskPriority: "Low"
-    },
-    {
-      id: 4,
-      TaskName: "Database Optimization",
-      TaskDescription: "Optimize database queries to improve application performance",
-      TaskPriority: "High"
-    },
-    {
-      id: 5,
-      TaskName: "Update Dependencies",
-      TaskDescription: "Update all project dependencies to their latest stable versions",
-      TaskPriority: "Medium"
-    }
-  ])
+  const dispatch = useDispatch();
+  let tasks = useSelector((state) => state.Task);
+
+  // Helper function to get priority class
+  const getPriorityClass = (priority) => {
+    if (!priority) return '';
+    const lowercasePriority = priority.toLowerCase();
+    if (lowercasePriority.includes('high')) return 'priority-high';
+    if (lowercasePriority.includes('medium')) return 'priority-medium';
+    if (lowercasePriority.includes('low')) return 'priority-low';
+    return '';
+  };
 
   return (
-    <div>
-      <section>
-        <h2>All Tasks </h2>
+    <div className="all-task-container">
+      <section className="task-header">
+        <h2>All Tasks</h2>
       </section>
 
       <section id="DataList">
-
-      { tasks.map((e)=>(
-          <div>
-            <h2>{e.TaskName}</h2>
-            <p>{e.TaskDescription}</p>
-            <p>{e.TaskPriority}</p>
-
+        {tasks.length === 0 ? (
+          <div className="empty-state">
+            <h3>No tasks yet!</h3>
+            <p>Create your first task to get started.</p>
           </div>
-        ))
-      }
+        ) : (
+          tasks.map((e, id) => (
+            <div key={id} className="task-card">
+              <h2 className="task-name">{e.TaskName}</h2>
+              <p className="task-description">{e.TaskDescription}</p>
+              <p className={`task-priority ${getPriorityClass(e.TaskPriority)}`}>
+                {e.TaskPriority}
+              </p>
 
+              <div className="task-buttons">
+                <button className="btn btn-done">Done</button>
+                <button className="btn btn-delete" onClick={() => {
+                  dispatch(DeleteTask(id))
+                }}>Delete</button>
+              </div>
+            </div>
+          ))
+        )}
       </section>
     </div>
   )

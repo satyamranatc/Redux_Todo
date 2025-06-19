@@ -1,7 +1,10 @@
 import React from 'react'
 import "./Create.css"
+import { useDispatch } from 'react-redux';
+import { AddTask } from '../TaskSlicer';
 
 export default function Create() {
+  const dispatch = useDispatch();
   function handleSubmit(e)
   {
     e.preventDefault();
@@ -11,6 +14,7 @@ export default function Create() {
       TaskPriority: e.target[2].value
     }
     console.log(NewTask);
+    dispatch(AddTask(NewTask));
   }
   return (
     <div>
