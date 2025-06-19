@@ -1,20 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let TaskSlicer = createSlice({
-    name: "Task",
+    name:"Task",
     initialState:[],
-    reducers: {
-        AddTask: (state, action) => {
-            state.push(action.payload);
-        },
-        DeleteTask: (state,action)=>{
-            state.splice(action.payload,1)
-            console.log(state);
-
+    reducers:{
+        addTask : (state,action)=>{
+            state.push(action.payload)
         }
     }
 });
 
-
-export default TaskSlicer.reducer
-export const {AddTask,DeleteTask} = TaskSlicer.actions
+export default TaskSlicer.reducer;
+export let {addTask} = TaskSlicer.actions;

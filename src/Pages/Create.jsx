@@ -1,47 +1,66 @@
 import React from 'react'
-import "./Create.css"
+import { addTask } from '../TaskSlicer';
 import { useDispatch } from 'react-redux';
-import { AddTask } from '../TaskSlicer';
 
 export default function Create() {
-  const dispatch = useDispatch();
-  function handleSubmit(e)
-  {
-    e.preventDefault();
-    let NewTask = {
-      TaskName: e.target[0].value,
-      TaskDescription: e.target[1].value,
-      TaskPriority: e.target[2].value
+    let dispatch = useDispatch()
+
+    const handleTaskSubmit = (e) => {
+        e.preventDefault();
+        let NewTask = {
+            name: e.target[0].value,
+            des: e.target[1].value,
+            caregory: e.target[2].value,
+            priorty: e.target[3].value
+        }
+        console.log(NewTask);
+        dispatch(addTask(NewTask))
     }
-    console.log(NewTask);
-    dispatch(AddTask(NewTask));
-  }
+
   return (
     <div>
-      <section>
-        <h2>Craete All Tasks From Here</h2>
-      </section>
+        <section className='text-center'>
+            <h1 className='text-2xl' >Create Your Tasks: </h1>
+        </section>
 
+        <section className='mt-4 p-2 m-auto'>
 
-      <section id="FormSection">
+            <form onSubmit={handleTaskSubmit}>
+                <label>
+                    Task Name:
+                    <input className='p-2' type="text" placeholder='Enter your task' />
+                </label>
+                <label>
+                    Task Des:
+                    <textarea className='p-2' ></textarea>
+                </label>
+                <label>
+                    Task Caregory:
+                    <select>
+                        <optgroup label="Daily">
+                            <option>Home</option>
+                            <option>Gym</option>
+                            <option>Study</option>
+                        </optgroup>
+                        <optgroup label="Work">
+                            <option>Meating</option>
+                            <option>Code</option>
+                            <option>Project</option>
+                        </optgroup>
+                    </select>
+                </label>
+                <label>
+                    Task Priorty:
+                    <select>
+                        <option>Low</option>
+                        <option>Modratre</option>
+                        <option>High</option>
+                    </select>
+                </label>
+                <button className='p-2 bg-blue-600 text-white'>Submit</button>
+            </form>
 
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder='Task Name:' />
-          <textarea name="" placeholder='Task Description: '></textarea>
-          <p>Task Priority</p>
-          <select>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        <button>Add Task</button>
-          
-
-        </form>
-
-      </section>
-
-
+        </section>
     </div>
   )
 }

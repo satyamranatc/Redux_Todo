@@ -1,29 +1,26 @@
 import React from 'react'
-import "./App.css"
+
+import NavBar from "./Components/NavBar.jsx"
+import Home from "./Pages/Home.jsx"
+import Create from "./Pages/Create.jsx"
+import Display from "./Pages/Display.jsx"
 
 import { BrowserRouter,Routes,Route,Link } from 'react-router-dom'
 
-import Create from './Pages/Create.jsx'
-import AllTasks from './Pages/AllTask.jsx'
-
 export default function App() {
   return (
-    <div className="app-container">
+    <div>
       <BrowserRouter>
-        <nav>
-          <ul>
-            <li><Link to={"/create"}>Create</Link></li>
-            <li><Link to={"/allTasks"}>All Tasks</Link></li>
-          </ul>
-        </nav>
+        <NavBar/>
 
-        <div className="page-content">
-          <Routes>
-            <Route path="/create" element={<Create />} />
-            <Route path="/allTasks" element={<AllTasks />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/create" element={<Create/>}/>
+          <Route path="/display" element={<Display/>}/>
+        </Routes>
+
       </BrowserRouter>
     </div>
   )
 }
+
