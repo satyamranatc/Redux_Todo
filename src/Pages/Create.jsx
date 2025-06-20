@@ -18,25 +18,40 @@ export default function Create() {
     }
 
   return (
-    <div>
-        <section className='text-center'>
-            <h1 className='text-2xl' >Create Your Tasks: </h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white p-4">
+        <section className='text-center mb-8'>
+            <h1 className='text-3xl font-bold text-blue-800 mb-2'>Create Your Tasks</h1>
+            <div className="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </section>
 
-        <section className='mt-4 p-2 m-auto'>
-
-            <form onSubmit={handleTaskSubmit}>
-                <label>
-                    Task Name:
-                    <input className='p-2' type="text" placeholder='Enter your task' />
-                </label>
-                <label>
-                    Task Des:
-                    <textarea className='p-2' ></textarea>
-                </label>
-                <label>
-                    Task Caregory:
-                    <select>
+        <section className='max-w-md mx-auto bg-white rounded-lg shadow-lg p-6 border border-blue-100'>
+            <form onSubmit={handleTaskSubmit} className="space-y-6">
+                <div>
+                    <label className="block text-sm font-medium text-blue-700 mb-2">
+                        Task Name
+                    </label>
+                    <input 
+                        className='w-full p-3 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors' 
+                        type="text" 
+                        placeholder='Enter your task' 
+                    />
+                </div>
+                
+                <div>
+                    <label className="block text-sm font-medium text-blue-700 mb-2">
+                        Task Description
+                    </label>
+                    <textarea 
+                        className='w-full p-3 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors h-24 resize-none' 
+                        placeholder='Describe your task...'
+                    ></textarea>
+                </div>
+                
+                <div>
+                    <label className="block text-sm font-medium text-blue-700 mb-2">
+                        Task Category
+                    </label>
+                    <select className="w-full p-3 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors bg-white">
                         <optgroup label="Daily">
                             <option>Home</option>
                             <option>Gym</option>
@@ -48,18 +63,23 @@ export default function Create() {
                             <option>Project</option>
                         </optgroup>
                     </select>
-                </label>
-                <label>
-                    Task Priorty:
-                    <select>
+                </div>
+                
+                <div>
+                    <label className="block text-sm font-medium text-blue-700 mb-2">
+                        Task Priority
+                    </label>
+                    <select className="w-full p-3 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors bg-white">
                         <option>Low</option>
                         <option>Modratre</option>
                         <option>High</option>
                     </select>
-                </label>
-                <button className='p-2 bg-blue-600 text-white'>Submit</button>
+                </div>
+                
+                <button className='w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg'>
+                    Create Task
+                </button>
             </form>
-
         </section>
     </div>
   )
